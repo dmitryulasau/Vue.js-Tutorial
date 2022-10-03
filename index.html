@@ -44,7 +44,7 @@
         <ul>
           <li
             :style="{cursor: selectedCursor}"
-            v-for="book in filteredBooks"
+            v-for="book in books"
             :class="{ fav: book.isFav }"
             @click="toggleFav(book)"
           >
@@ -54,19 +54,26 @@
           </li>
         </ul>
       </div>
+
       <button @click="toggleShowBooks">
         <span v-if="showBooks">Hide Books</span><span v-else>Show Books</span>
       </button>
-      <!-- <div v-show="showBooks">Currently showing books</div>
-      <br />
-      <div class="box" @mouseover="handleEvent($event, 5)">
-        moseover (enter)
+
+      <!-- FAVOURITE BOOKS -->
+      <button @click="toggleFavBooks">
+        <span v-if="!favBooks">Show Favourites</span>
+        <span v-else>Hide Favourites</span>
+      </button>
+
+      <div v-if="favBooks">
+        <ul>
+          <li style="background-color: #ffa94d" v-for="book in filteredBooks">
+            <img width="40" :src="book.img" :alt="book.title" />
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+          </li>
+        </ul>
       </div>
-      <div class="box" @mouseleave="handleEvent">mouseleave</div>
-      <div class="box" @dblclick="handleEvent">double click</div>
-      <div class="box" @mousemove="handleMouseMove">
-        position - {{ x }} {{ y }}
-      </div> -->
     </div>
 
     <script src="app.js"></script>

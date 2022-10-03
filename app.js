@@ -3,6 +3,7 @@ const app = Vue.createApp({
     return {
       url: "https://vuejs.org/",
       showBooks: true,
+      favBooks: false,
       books: [
         {
           title: "name of the wind",
@@ -33,6 +34,9 @@ const app = Vue.createApp({
     toggleFav(book) {
       console.log(book);
       book.isFav = !book.isFav;
+    },
+    toggleFavBooks() {
+      this.favBooks = !this.favBooks;
     },
   },
   computed: {
